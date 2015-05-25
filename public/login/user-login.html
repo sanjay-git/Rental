@@ -1,0 +1,40 @@
+<div class="user-forms clearfix">
+<form class="col-xs-5 col-xs-offset-1" ng-submit="checkLogin()">
+	<h3> Login </h3>
+	<div class="form-group">
+		<span class="glyphicon glyphicon-user" style="padding: 0 10px;"></span><label> Email/Username </label>
+		<input type="text" class="form-control" ng-model="username"/>
+	</div>
+	<div class="form-group">
+		<span class="glyphicon glyphicon-lock" style="padding: 0 10px"></span><label> Password </label>
+		<input type="password" class="form-control" ng-model="password"/>
+	</div>
+	<button type="submit" class="btn btn-default center-block col-xs-6" style="float: none;">Login</button>
+</form>
+<form class="col-xs-5 col-xs-offset-1" ng-submit="registerUser()">
+	<h3> Register </h3>
+	<div class="form-group">
+		<span class="glyphicon glyphicon-user" style="padding: 0 10px;"></span><label> Email </label>
+		<input type="email" class="form-control" ng-model="username"/>
+	</div>
+	<div class="form-group">
+		<span class="glyphicon glyphicon-lock" style="padding: 0 10px"></span><label> Password </label>
+		<input type="password" class="form-control" ng-model="password"/>
+	</div>
+	<div class="form-group">
+		<span class="glyphicon glyphicon-phone" style="padding: 0 10px"></span><label> Mobile </label>
+		<div class="input-group">
+			<span class="input-group-addon">+91</span>
+			<input type="text" class="form-control" ng-model="phone"/>
+		</div>
+	</div>
+		<div class="form-group">
+		<span class="glyphicon glyphicon-home" style="padding: 0 10px"></span><label> City </label>
+		<div class="dropdown">
+			<select class="form-control" type="input" ng-model="city" ng-options="item for item in cities">
+			</select>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-default center-block col-xs-6" style="float: none;">Register Me!</button>
+</form>
+</div>

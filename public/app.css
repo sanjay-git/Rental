@@ -1,0 +1,8 @@
+body {
+	background: url(assets/concrete_seamless.png);
+}
+.user-forms {
+	margin: 0 auto;
+	max-width: 600px;
+	background: url(assets/crossword.png);
+}
