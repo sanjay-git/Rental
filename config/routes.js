@@ -1,5 +1,6 @@
 var path = require("path");
 var mongoose = require("mongoose");
+var jwt = require("jwt-simple");
 App.requireModel("users");
 var User = mongoose.model('User');
 module.exports = function(app) {
@@ -16,7 +17,7 @@ module.exports = function(app) {
 		user.save(function(err, user) {
 			if(err) { console.log(err); return}
 
-			res.json(user);
+			res.json(jwt.encode({email: user.email}, "secretKey"));
 		})
 	});
 

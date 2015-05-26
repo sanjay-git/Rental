@@ -4,6 +4,7 @@ var env = process.env.NODE_DEV || 'development';
 var path = require('path');
 var packageJson = require('../package.json');
 var mongoose = require('mongoose');
+var jwt = require('jwt-simple');
 
 global.App = {
 	env: env,
@@ -34,4 +35,8 @@ App.app.use(bodyParser.urlencoded({ extended: false }));
 App.app.use('/',express.static(App.appPath('public')));
 require("./routes")(App.app);
 
-mongoose.connect("mongodb://localhost/news");
+if(env === "development")
+	mongoose.connect("mongodb://localhost/news");
+else {
+	
+}
