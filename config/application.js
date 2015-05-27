@@ -33,10 +33,11 @@ global.App = {
 App.app.use(bodyParser.json());
 App.app.use(bodyParser.urlencoded({ extended: false }));
 App.app.use('/',express.static(App.appPath('public')));
+require("./passport")(App.app);
 require("./routes")(App.app);
 
 if(env === "development")
 	mongoose.connect("mongodb://localhost/news");
 else {
-	
+
 }

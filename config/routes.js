@@ -3,27 +3,17 @@ var mongoose = require("mongoose");
 var jwt = require("jwt-simple");
 App.requireModel("users");
 var User = mongoose.model('User');
+var passport = require("passport");
 module.exports = function(app) {
 	app.get("/", function(req, res) {
-		// console.log(User);
 		res.sendFile(path.join(__dirname, '..') + "/index.html");
-		// res.send(require('../index.html'));
 	});
 
-	app.post("/registerUser", function(req, res) {
-		console.log(req.body);
-		var user = new User({email: req.body.email, salt: req.body.password});
-		user.save(function(err, user) {
-			if(err) { console.log(err); return}
-
-			res.json(jwt.encode({email: user.email}, "secretKey"));
-		})
+	app.post("/registerUser", passport.authenticate('local-signup', {session: false}), function(req, res) {
+		res.json(jwt.encode({email: res.email}, "secretKey"));
 	});
-
-	app.post("/loginUser", function(req, res) {
-		console.log(req.body);
-		User.findByEmailPassword(req.body, function(){
-
-		});
-	})
+	
+	app.post("/loginUser", passport.authenticate('local-login', {session: false}), function(req, res) {
+		res.json(jwt.encode({email: res.email}, "secretKey"));
+	});
 }
