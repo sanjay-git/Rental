@@ -12,8 +12,7 @@ module.exports = function(app) {
 
 	app.post("/registerUser", function(req, res) {
 		console.log(req.body);
-		var user = new User(req.body);
-		user.setPassword(req.body.password);
+		var user = new User({email: req.body.email, salt: req.body.password});
 		user.save(function(err, user) {
 			if(err) { console.log(err); return}
 
