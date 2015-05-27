@@ -9,7 +9,7 @@ var jwt = require('jwt-simple');
 
 global.App = {
 	env: env,
-	port: process.env.port || 4000,
+	port: process.env.PORT || 4000,
 	version: packageJson.version,
 	serverName: packageJson.name,
 	root: path.join(__dirname, ".."),
