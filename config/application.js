@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var env = process.env.NODE_DEV || 'development';
+console.log(process.env.NODE_ENV);
+var env = process.env.NODE_ENV || 'development';
 var path = require('path');
 var packageJson = require('../package.json');
 var mongoose = require('mongoose');
@@ -19,6 +20,7 @@ global.App = {
 	start: function() {
 		if(!this.started) {
 			this.started = true;
+			console.log(process.env);
 			console.log("Starting " + App.serverName + " Version " + App.version + " on port " + App.port + " in mode: " + App.env);
 			App.app.listen(this.port)
 		}
@@ -29,7 +31,6 @@ global.App = {
 	}
 }
 
-// require(path.join(__dirname, '..') + "/config/routes")(App.app);
 App.app.use(bodyParser.json());
 App.app.use(bodyParser.urlencoded({ extended: false }));
 App.app.use('/',express.static(App.appPath('public')));
@@ -39,5 +40,5 @@ require("./routes")(App.app);
 if(env === "development")
 	mongoose.connect("mongodb://localhost/news");
 else {
-
+	mongoose.connect("mongodb://sanjay:Rental1wala@ds037252.mongolab.com:37252/test_rental");
 }

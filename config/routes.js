@@ -1,8 +1,9 @@
 var path = require("path");
 var mongoose = require("mongoose");
 var jwt = require("jwt-simple");
-App.requireModel("users");
-var User = mongoose.model('User');
+// App.requireModel("users");
+// var User = mongoose.model('User');
+var User = App.requireModel("users");
 var passport = require("passport");
 module.exports = function(app) {
 	app.get("/", function(req, res) {

@@ -1,7 +1,6 @@
 var passport = require("passport");
 var mongoose = require('mongoose');
-App.requireModel("users");
-var User = mongoose.model('User');
+var User = App.requireModel("users");
 
 var localStrategy = require("passport-local");
 var emailPasswordStrategy = new localStrategy({ usernameField: "email", passwordField: "password"},

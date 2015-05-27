@@ -48,4 +48,4 @@ userSchema.statics.findByEmailPassword = function(user, done) {
 	})
 }
 
-mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);
