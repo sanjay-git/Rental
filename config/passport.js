@@ -22,7 +22,7 @@ var emailStrategy = new localStrategy({ passReqToCallback: true, usernameField: 
 				console.log("user already exists. cannot sign up");
 				done(null, false, "User exists");
 			} else {
-				var user = new User({email: username, salt: password});
+				var user = new User({email: username, salt: password, phone: req.body.phone, city: req.body.city});
 				user.save(function(err, newUser) {
 					if(err) {
 						done(err);

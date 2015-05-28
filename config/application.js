@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-console.log(process.env.NODE_ENV);
 var env = process.env.NODE_ENV || 'development';
 var path = require('path');
 var packageJson = require('../package.json');
@@ -20,7 +19,6 @@ global.App = {
 	start: function() {
 		if(!this.started) {
 			this.started = true;
-			console.log(process.env);
 			console.log("Starting " + App.serverName + " Version " + App.version + " on port " + App.port + " in mode: " + App.env);
 			App.app.listen(this.port)
 		}

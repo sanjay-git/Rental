@@ -14,7 +14,7 @@
 		"Mumbai",
 		"Delhi"
 		];
-		$scope.city = $scope.cities[0];
+		$scope.reg_city = $scope.cities[0];
 
 		$scope.checkLogin = function() {
 			//Todo: Logic authentication code goes here. For now, checking for non empty username and password fields
@@ -35,8 +35,10 @@
 
 		$scope.registerUser = function() {
 			auth.register({
-				email: $scope.username,
-				password: $scope.password
+				email: $scope.reg_username,
+				password: $scope.reg_password,
+				phone: $scope.reg_phone,
+				city: $scope.reg_city
 			}).error(function(error) {
 				console.log(error);
 			}).then(function() {
