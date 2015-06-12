@@ -16,7 +16,7 @@ global.App = {
 	appPath: function(path) {
 		return this.root + '/' + path;
 	},
-	start: function() {
+	start: function() { 
 		if(!this.started) {
 			this.started = true;
 			console.log("Starting " + App.serverName + " Version " + App.version + " on port " + App.port + " in mode: " + App.env);

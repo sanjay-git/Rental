@@ -19,15 +19,14 @@
 		$scope.checkLogin = function() {
 			//Todo: Logic authentication code goes here. For now, checking for non empty username and password fields
 			if($scope.username != "" && $scope.password !== "") {
-			auth.login({
-				email: $scope.username,
-				password: $scope.password
-			}).error(function(error) {
-				console.log(error);
-			}).then(function() {
-
-			});
-				//Todo: Go to Home Page
+				auth.login({
+					email: $scope.username,
+					password: $scope.password
+				}).error(function(error) {
+					console.log(error);
+				}).then(function() {
+					$state.go('home');
+				});
 			} else {
 				//Todo: Show error text and provide Register link
 			}
@@ -42,6 +41,7 @@
 			}).error(function(error) {
 				console.log(error);
 			}).then(function() {
+				$state.go('home');
 
 			})
 		}
@@ -65,8 +65,15 @@
 			template: '<span> Register view should come here </span>'
 		}
 
+		var homeState = {
+			name: 'home',
+			url: '/home',
+			templateUrl: './main/main.html'
+		}
+
 		$stateProvider.state(loginState);
 		$stateProvider.state(registerState);
+		$stateProvider.state(homeState);
 
 	}]);
 
