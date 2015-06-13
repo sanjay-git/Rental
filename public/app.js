@@ -2,7 +2,17 @@
 	console.log("goRentalApp");
 	var app = angular.module("goRentalApp", ['ui.router']);
 
-	app.controller('loginCtrl', ['$scope', '$state', 'auth', function($scope, $state, auth) {
+	app.run(function ($state,authToken,$rootScope) {
+		$rootScope.user = {};
+	    $rootScope.$state = $state;
+	    $rootScope.isAuthenticated = authToken.isAuthenticated
+	});
+
+	app.controller('navCtrl', ['$scope', 'authToken', function($scope, authToken) {
+		$scope.userName = ""
+	}]);
+
+	app.controller('loginCtrl', ['$scope', '$state', 'auth', '$rootScope', function($scope, $state, auth, $rootScope) {
 		$scope.username = "";
 		$scope.password = "";
 		$scope.cities = [
@@ -25,6 +35,7 @@
 				}).error(function(error) {
 					console.log(error);
 				}).then(function() {
+					$rootScope.user.name = $scope.username;
 					$state.go('home');
 				});
 			} else {
@@ -41,8 +52,8 @@
 			}).error(function(error) {
 				console.log(error);
 			}).then(function() {
+				$rootScope.user.name = $scope.username;
 				$state.go('home');
-
 			})
 		}
 
@@ -50,7 +61,7 @@
 
 	app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
-		 $urlRouterProvider.otherwise('/login');
+		 $urlRouterProvider.otherwise('/home');
 
 		var loginState = {
 			name: "login",
@@ -89,6 +100,7 @@
 		auth.login = function(user) {
 			return $http.post('/loginUser', user).success(function(data) {
 				console.log(data);
+				authToken.setToken(data);
 			});
 		}
 

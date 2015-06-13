@@ -2,11 +2,11 @@
 <div class="user-forms clearfix">
 <form name="loginForm" class="col-xs-5 col-xs-offset-1" ng-submit="checkLogin()">
 	<h3> Login </h3>
-	<div class="form-group" ng-class="{'has-error': registerForm.email.$invalid && registerForm.email.$dirty}">
+	<div class="form-group" ng-class="{'has-error': loginForm.email.$invalid && loginForm.email.$dirty}">
 		<span class="glyphicon glyphicon-user" style="padding: 0 10px;"></span><label> Email/Username </label>
 		<input type="text" name="email" class="form-control" required ng-model="username"/>
 	</div>
-	<div class="form-group" ng-class="{'has-error': registerForm.password.$invalid && registerForm.password.$dirty}">
+	<div class="form-group" ng-class="{'has-error': loginForm.password.$invalid && loginForm.password.$dirty}">
 		<span class="glyphicon glyphicon-lock" style="padding: 0 10px"></span><label> Password </label>
 		<input type="password" name="password" class="form-control" required ng-model="password"/>
 	</div>

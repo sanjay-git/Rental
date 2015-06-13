@@ -35,8 +35,9 @@ App.app.use('/',express.static(App.appPath('public')));
 require("./passport")(App.app);
 require("./routes")(App.app);
 
-if(env === "development")
+if(env === "development") {
 	mongoose.connect("mongodb://localhost/news");
+}
 else {
 	mongoose.connect("mongodb://sanjay:Rental1wala@ds037252.mongolab.com:37252/test_rental");
 }
