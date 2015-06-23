@@ -1,4 +1,5 @@
 body {
+	padding-top:70px;
 	background: url(assets/concrete_seamless.png);
 }
 .user-forms {
@@ -9,12 +10,12 @@ body {
 
 /* user-login */
 .gr-options-list {
-	background: #303135;
 	padding: 0;
-	color: #F2F2F8;
+	color: #303135;
 	max-width: 750px;
 }
 .gr-options-list li {
+	background: #FFFFFF;
 	position: relative;
 	float: left;
 	height: 115px;
@@ -26,6 +27,7 @@ body {
 .gr-options-list li:hover {
 	background: url(assets/concrete_seamless.png);
 	color: #777;
+	border: 2px #303135 solid;
 }
 .gr-options-list-item-mobile-icon {
 	height: 80px;

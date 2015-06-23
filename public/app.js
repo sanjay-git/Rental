@@ -16,13 +16,13 @@
 		$scope.username = "";
 		$scope.password = "";
 		$scope.cities = [
-		"Select City",
-		"Hyderabad",
-		"Bangalore",
-		"Chennai",
-		"Pune",
-		"Mumbai",
-		"Delhi"
+			"Select City",
+			"Hyderabad",
+			"Bangalore",
+			"Chennai",
+			"Pune",
+			"Mumbai",
+			"Delhi"
 		];
 		$scope.reg_city = $scope.cities[0];
 
@@ -59,6 +59,24 @@
 
 	}]);
 
+	app.controller('categoriesCtrl', ['$scope', function($scope) {
+		$scope.categoriesList = [
+			"Mobiles & Tablets",
+			"Electronics",
+			"Home & Furniture",
+			"Vehicles",
+			"Cat 5",
+			"Cat 6",
+			"Cat 7",
+			"Cat 8",
+			"Cat 9",
+			"Cat 10",
+			"Cat 11",
+			"Cat 12"
+		]
+		$scope.check = "Check"
+	}]);
+
 	app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
 		 $urlRouterProvider.otherwise('/home');
@@ -82,9 +100,17 @@
 			templateUrl: './main/main.html'
 		}
 
+		var postAdState = {
+			name: "postAd",
+			url: "/postAd",
+			templateUrl: "./main/post_ad.html",
+			controller: 'categoriesCtrl'
+		}
+
 		$stateProvider.state(loginState);
 		$stateProvider.state(registerState);
 		$stateProvider.state(homeState);
+		$stateProvider.state(postAdState);
 
 	}]);
 
