@@ -42,3 +42,27 @@ body {
 	bottom: 10px;
 	right: 10px;
 }
+.option-item {
+	text-align: center;
+	height: 125px;
+	-webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+	box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+	border: 5px solid #FFFFFF;
+	border-width:0 5px 5px 0;
+	background: #66A3C6;
+}
+.option-item:hover {
+	color: #777;
+	border: 3px #303135 solid;
+	background-color: #ED6859;
+}
+.option-item div {
+	position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: larger;
+}
+.option-item img {
+	float: left;
+}
